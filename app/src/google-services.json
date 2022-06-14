@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "834461011245",
+    "project_id": "fairytales-365fb",
+    "storage_bucket": "fairytales-365fb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:834461011245:android:b33f3e07af584070b697a4",
+        "android_client_info": {
+          "package_name": "com.top1shvetsvadim1.fairytales"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "834461011245-q8tvug7nr9drjbi0927atrm5oq5vmtft.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.top1shvetsvadim1.fairytales",
+            "certificate_hash": "ef1c421c88013883c93fe097a76fa6661d6935a9"
+          }
+        },
+        {
+          "client_id": "834461011245-csbue57gr0vjvdejhnh1n3hmmbvnl7fp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbbczh27wCtGRKEpOjJGWLIibVxTVFVkc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "834461011245-csbue57gr0vjvdejhnh1n3hmmbvnl7fp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
