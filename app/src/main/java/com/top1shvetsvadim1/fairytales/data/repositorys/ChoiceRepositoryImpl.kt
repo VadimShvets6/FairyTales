@@ -1,25 +1,18 @@
-package com.top1shvetsvadim1.fairytales.data
+package com.top1shvetsvadim1.fairytales.data.repositorys
 
 import android.util.Log
-import android.view.View
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.top1shvetsvadim1.fairytales.domain.ChoiceItem
-import com.top1shvetsvadim1.fairytales.domain.ChoiceRepository
+import com.top1shvetsvadim1.fairytales.data.callbacks.CallbackChoiceItem
+import com.top1shvetsvadim1.fairytales.domain.choiceDomain.ChoiceItem
+import com.top1shvetsvadim1.fairytales.domain.choiceDomain.ChoiceRepository
 import kotlinx.coroutines.*
 
 object ChoiceRepositoryImpl : ChoiceRepository {
 
     private val list = arrayListOf<ChoiceItem>()
 
-    private val coroutineScope = CoroutineScope(Dispatchers.Main)
-
-
-    private var job: Deferred<ArrayList<ChoiceItem>>? = null
-
-    override suspend fun loadChoice(myCallbck : MyCallback) {
+    override suspend fun loadChoice(callbackChoiceItem : CallbackChoiceItem) {
         val db = Firebase.firestore
         db.collection("choice")
             .get()
@@ -28,12 +21,12 @@ object ChoiceRepositoryImpl : ChoiceRepository {
                         list.add(
                             ChoiceItem(
                                 document.data["name"].toString(),
-                                document.data["imageUrl"].toString(),
+                                document.data["imageUrl"].toString()
                             )
                         )
                         Log.d("MainActivity", list.toString())
                 }
-                myCallbck.onCallback(list)
+                callbackChoiceItem.onCallback(list)
             }
             .addOnFailureListener { exception ->
                 Log.w("MainActivity", "Error getting documents.", exception)

@@ -28,9 +28,10 @@
 
 
     <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/coordinator"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbarMenu">
@@ -70,72 +71,72 @@
                     android:layout_height="50dp"
                     android:layout_weight="1"
                     android:background="@drawable/bg_edit_text"
-                    android:hint="Search..."
                     android:drawableStart="@drawable/ic_search"
                     android:drawablePadding="10dp"
+                    android:hint="Search..."
                     android:paddingStart="20dp"
-                    android:textStyle="italic"/>
+                    android:textStyle="italic" />
 
 
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Категории"
-                    android:textSize="16sp"
-                    android:layout_marginTop="16dp"
                     android:layout_marginStart="32dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="Категории"
                     android:textColor="@color/black"
-                    android:fontFamily="@font/roboto_bold"/>
+                    android:textSize="16sp" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="показать все"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="14dp"
-                    android:textColor="#584af8"
+                    android:text="показать все"
                     android:textAlignment="viewEnd"
-                    android:textSize="14sp"/>
+                    android:textColor="#584af8"
+                    android:textSize="14sp" />
 
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvCatalogList"
-                android:background="#E4E4E4"
-                android:layout_marginStart="20dp"
-                tools:itemCount="4"
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
-                tools:listitem="@layout/item_catalog"
+                android:layout_marginStart="20dp"
+                android:background="#E4E4E4"
                 android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="4"
+                tools:listitem="@layout/item_catalog" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="135dp"
                 android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/bg_constrain">
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/ivGoldYear"
                     android:layout_width="140dp"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="4dp"
                     android:layout_marginBottom="4dp"
-                    android:layout_height="match_parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    android:src="@drawable/russian_books"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    android:src="@drawable/russian_books"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/tvLablePopularGold"
@@ -154,65 +155,65 @@
                     android:id="@+id/tvLableGold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#E4BB3D"
                     android:layout_marginTop="4dp"
                     android:fontFamily="sans-serif-black"
-                    android:textSize="22sp"
                     android:text="'Золотого века'"
-                    app:layout_constraintTop_toBottomOf="@id/tvLablePopularGold"
-                    app:layout_constraintStart_toStartOf="@id/tvLablePopularGold"/>
+                    android:textColor="#E4BB3D"
+                    android:textSize="22sp"
+                    app:layout_constraintStart_toStartOf="@id/tvLablePopularGold"
+                    app:layout_constraintTop_toBottomOf="@id/tvLablePopularGold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
+                    android:text="узнать больше"
                     android:textColor="#ff9900"
-                    app:layout_constraintTop_toBottomOf="@id/tvLableGold"
                     app:layout_constraintStart_toStartOf="@id/tvLableGold"
-                    android:text="узнать больше"/>
+                    app:layout_constraintTop_toBottomOf="@id/tvLableGold" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Аудиокниги"
-                    android:textSize="16sp"
-                    android:layout_marginTop="16dp"
                     android:layout_marginStart="32dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="Аудиокниги"
                     android:textColor="@color/black"
-                    android:fontFamily="@font/roboto_bold"/>
+                    android:textSize="16sp" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="показать все"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="14dp"
-                    android:textColor="#584af8"
+                    android:text="показать все"
                     android:textAlignment="viewEnd"
-                    android:textSize="14sp"/>
+                    android:textColor="#584af8"
+                    android:textSize="14sp" />
 
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvCatalogAudioBook"
-                android:background="#E4E4E4"
-                android:layout_marginStart="20dp"
-                tools:itemCount="4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:listitem="@layout/item_audiobook"
+                android:layout_marginStart="20dp"
+                android:background="#E4E4E4"
                 android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="4"
+                tools:listitem="@layout/item_audiobook" />
 
         </LinearLayout>
-
     </ScrollView>
+
 
     <ProgressBar
         android:id="@+id/progressBarLoad"
@@ -224,4 +225,56 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="#ffffff"
+            app:fabCradleMargin="8dp"
+            app:fabCradleRoundedCornerRadius="30dp"
+            app:fabCradleVerticalOffset="6dp">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/buttonHome"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    app:tint="@color/black"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_home_not_active"/>
+                <ImageView
+                    android:id="@+id/buttonFavourite"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    app:tint="@color/black"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_mdi_light_heart"/>
+                <ImageView
+                    android:id="@+id/buttonSettings"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    app:tint="@color/black"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_mdi_light_cog"/>
+            </LinearLayout>
+
+        </com.google.android.material.bottomappbar.BottomAppBar>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
