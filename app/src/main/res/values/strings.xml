@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">FairyTales</string>
+    <string name="test">"Мастер и Маргарита"</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
