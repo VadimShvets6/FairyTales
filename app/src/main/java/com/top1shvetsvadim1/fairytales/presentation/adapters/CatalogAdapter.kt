@@ -4,9 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.squareup.picasso.Picasso
-import com.top1shvetsvadim1.fairytales.databinding.FragmentCatalogBinding
 import com.top1shvetsvadim1.fairytales.databinding.ItemCatalogBinding
-import com.top1shvetsvadim1.fairytales.domain.ChoiceItem
+import com.top1shvetsvadim1.fairytales.domain.choiceDomain.ChoiceItem
 import com.top1shvetsvadim1.fairytales.presentation.adapters.callbacks.CatalogDiffCallback
 import com.top1shvetsvadim1.fairytales.presentation.adapters.viewHolders.CatalogViewHolder
 
