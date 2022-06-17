@@ -14,12 +14,11 @@ import com.top1shvetsvadim1.fairytales.presentation.adapters.viewHolders.Catalog
 
 class AudioBookAdapter : ListAdapter<DetailItem, AudioBookViewHolder>(AudioBookDiffCallback) {
 
+
+    //Создаем значение к которому можно присвоеть значение из активити слушателя
+    var onAudioBookClickListener: OnAudioBookClickListener? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AudioBookViewHolder {
-        val layout = when (viewType) {
-            VIEW_TYPE_ITEM -> R.layout.item_audiobook
-            VIEW_TYPE_MORE -> R.layout.item_more_book
-            else -> throw RuntimeException("Unknow viewType: $viewType")
-        }
         val binding = ItemAudiobookBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
@@ -36,20 +35,17 @@ class AudioBookAdapter : ListAdapter<DetailItem, AudioBookViewHolder>(AudioBookD
                 tvName.text = audioItem.name
                 tvAuthor.text = audioItem.author
                 Picasso.get().load(imageUrl).into(ivLogo)
+
+                root.setOnClickListener {
+                    onAudioBookClickListener?.onItemClick(this)
+                }
             }
         }
     }
 
-    override fun getItemViewType(position: Int): Int {
-        return if (position == itemCount) {
-            VIEW_TYPE_MORE
-        } else {
-            VIEW_TYPE_ITEM
-        }
+    //Добавим интерфейс слушатель клика
+    interface OnAudioBookClickListener {
+        fun onItemClick(detail: DetailItem)
     }
 
-    companion object {
-        const val VIEW_TYPE_MORE = 0
-        const val VIEW_TYPE_ITEM = 1
-    }
 }

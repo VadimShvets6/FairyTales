@@ -1,16 +1,20 @@
 package com.top1shvetsvadim1.fairytales.presentation.fragments
 
+import android.content.Intent
 import android.graphics.PorterDuff
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.top1shvetsvadim1.fairytales.R
 import com.top1shvetsvadim1.fairytales.databinding.FragmentCatalogBinding
+import com.top1shvetsvadim1.fairytales.domain.detailDomain.DetailItem
+import com.top1shvetsvadim1.fairytales.presentation.activity.DetailActivity
 import com.top1shvetsvadim1.fairytales.presentation.adapters.AudioBookAdapter
 import com.top1shvetsvadim1.fairytales.presentation.adapters.CatalogAdapter
 import com.top1shvetsvadim1.fairytales.presentation.state.Loading
@@ -27,7 +31,7 @@ class CatalogFragment : Fragment() {
 
 
     private lateinit var listAdapterCatalog: CatalogAdapter
-    private lateinit var listAdapterAudioBook : AudioBookAdapter
+    private lateinit var listAdapterAudioBook: AudioBookAdapter
 
     private val viewModel by lazy {
         ViewModelProvider(this)[CatalogViewModel::class.java]
@@ -62,6 +66,24 @@ class CatalogFragment : Fragment() {
                 PorterDuff.Mode.SRC_IN
             )
         }
+        listAdapterAudioBook.onAudioBookClickListener =
+            object : AudioBookAdapter.OnAudioBookClickListener {
+                override fun onItemClick(detail: DetailItem) {
+                    Toast.makeText(
+                        context,
+                        detail.name,
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                    Intent(context, DetailActivity::class.java).apply {
+                        arguments = Bundle().apply {
+                            putParcelable(KEY_DETAIL, detail)
+                        }
+                        putExtra(KEY_ARGUMENTS, arguments)
+                        startActivity(this)
+                    }
+                }
+            }
     }
 
     private fun viewModelObserve() {
@@ -69,7 +91,7 @@ class CatalogFragment : Fragment() {
             Log.d("TEST", it.toString())
             listAdapterCatalog.submitList(it)
         }
-        viewModel.audioBookList.observe(viewLifecycleOwner){
+        viewModel.audioBookList.observe(viewLifecycleOwner) {
             listAdapterAudioBook.submitList(it)
         }
         viewModel.state.observe(viewLifecycleOwner) {
@@ -87,20 +109,22 @@ class CatalogFragment : Fragment() {
     }
 
 
-    private fun setupRecyclerView(){
+    private fun setupRecyclerView() {
         with(binding.rvCatalogList) {
-            listAdapterCatalog = CatalogAdapter()
+            listAdapterCatalog = CatalogAdapter(requireContext())
             adapter = listAdapterCatalog
         }
-        with(binding.rvCatalogAudioBook){
+        with(binding.rvCatalogAudioBook) {
             listAdapterAudioBook = AudioBookAdapter()
             adapter = listAdapterAudioBook
         }
     }
 
 
-
     companion object {
+
+        const val KEY_ARGUMENTS = "arguments"
+        const val KEY_DETAIL = "detail"
         @JvmStatic
         fun newInstance() = CatalogFragment()
 

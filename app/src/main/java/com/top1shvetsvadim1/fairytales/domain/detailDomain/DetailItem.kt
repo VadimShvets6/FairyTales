@@ -1,5 +1,9 @@
 package com.top1shvetsvadim1.fairytales.domain.detailDomain
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class DetailItem(
     val name : String = "",
     val description : String = "",
@@ -8,4 +12,4 @@ data class DetailItem(
     val imageUrl : String = "",
     val mediaUrl : String = "",
     val text : String = ""
-)
+) : Parcelable
